@@ -1,14 +1,17 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import SimpleTabs from '../components/SimpleTabs'
+import {Container, Box} from '@material-ui/core';
+import Tab from '../components/Tab';
+import Header from '../components/Layout/Header';
+
+
 
 export default function Index() {
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="lg">
+      <Header/>
       <Box my={4}>
         <h1>Welcome to Word App</h1>
-        <SimpleTabs />
+        <Tab />
       </Box>
     </Container>
   );
