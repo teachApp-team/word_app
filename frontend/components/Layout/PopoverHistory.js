@@ -48,7 +48,7 @@ export default function PopoverHistory() {
       </div>
       <Divider /> 
       <div style={{textAlign:"center"}}>
-        <Button variant="contained" size="small"style={{marginTop:"10px"}}>メッセージ詳細</Button>
+        <Button variant="contained" size="small"style={{marginTop:"10px"}}>学習状況詳細</Button>
       </div>
     </div>
   );
