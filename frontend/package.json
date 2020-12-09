@@ -8,11 +8,18 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.13",
     "@material-ui/core": "latest",
+    "bootstrap": "^4.5.3",
+    "chart.js": "^2.9.4",
     "clsx": "latest",
+    "igniteui-react-charts": "^16.12.6",
+    "igniteui-react-core": "^16.12.6",
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-bootstrap": "^1.4.0",
+    "react-chartjs-2": "^2.11.1",
+    "react-dom": "latest",
+    "react-minimal-pie-chart": "^8.1.0"
   },
   "scripts": {
     "dev": "next",

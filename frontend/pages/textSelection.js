@@ -10,12 +10,16 @@ export default function Index() {
     <Container disableGutters={true}>
       <Header/>
       <Container maxWidth='lg'>
-        <h3>学習中の教材</h3>
+        <h5>学習中の教材</h5>
         <LearningTexts />
-        <h3>教材一覧</h3>
+        <h5>教材一覧</h5>
         <LearningTexts />
         <Link href="/">
           <a>Go to index page</a>
+        </Link>
+        <br></br>
+        <Link href="/textInfo">
+          <a>Go to textInfo page</a>
         </Link>
       </Container>
     </Container>
