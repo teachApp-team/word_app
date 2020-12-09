@@ -20,6 +20,10 @@ export default function Index() {
       <Link href="/textInfo">
         <a>Go to textInfo page</a>
       </Link>
+      <br></br>
+      <Link href="/learningCondition">
+        <a>Go to learningCondition page</a>
+      </Link>
     </Container>
   );
 }
