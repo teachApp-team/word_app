@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import withReduxStore from '../lib/redux-store';
+import {Provider} from 'react-redux'
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../constants/theme';
+import './styles.css'
 
-export default function MyApp(props) {
-  const { Component, pageProps } = props;
+function MyApp(props) {
+  const { Component, pageProps, reduxStore } = props;
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -25,7 +28,9 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Component {...pageProps} />
+        <Provider store={reduxStore}>
+          <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     </React.Fragment>
   );
@@ -35,3 +40,5 @@ MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired,
 };
+
+export default withReduxStore(MyApp)

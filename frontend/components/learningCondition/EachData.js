@@ -7,40 +7,34 @@ export default function EachData() {
   return(
     <Container style={{display: "flex",flexWrap: "wrap"}}>
       <Card style={{width: "40%", maxWidth: "200px", margin:"10px auto", backgroundColor:"#EEEEEE"}}>
-        <CardActionArea>
-          <CardContent style={{textAlign: "center"}}>
-            <Typography variant="body2" component="p">
-              今週の習得数
-            </Typography>
-            <Typography variant="body2" component="p">
-              100単語
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+        <CardContent style={{textAlign: "center", padding:"20px"}}>
+          <div style={{fontSize: "13px"}}>
+            今週の習得数
+          </div>
+          <div style={{fontSize: "13px"}}>
+            100単語
+          </div>
+        </CardContent>
       </Card>
       <Card style={{width: "40%", maxWidth: "200px", margin:"10px auto", backgroundColor:"#EEEEEE"}}>
-        <CardActionArea>
-          <CardContent  style={{textAlign: "center"}}>
-            <Typography variant="body2" component="p">
-              累計習得数
-            </Typography>
-            <Typography variant="body2" component="p">
-              100単語
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+        <CardContent  style={{textAlign: "center", padding:"20px"}}>
+          <div style={{fontSize: "13px"}}>
+            累計習得数
+          </div>
+          <div style={{fontSize: "13px"}}>
+            100単語
+          </div>
+        </CardContent>
       </Card>
       <Card style={{width: "40%", maxWidth: "200px", margin:"10px auto", backgroundColor:"#EEEEEE"}}>
-        <CardActionArea>
-          <CardContent  style={{textAlign: "center"}}>
-            <Typography variant="body2" component="p">
-              今日の習得数
-            </Typography>
-            <Typography variant="body2" component="p">
-              100単語
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+        <CardContent  style={{textAlign: "center", padding:"20px"}}>
+          <div style={{fontSize: "13px"}}>
+            今日の習得数
+          </div>
+          <div style={{fontSize: "13px"}}>
+            100単語
+          </div>
+        </CardContent>
       </Card>
     </Container>
   );

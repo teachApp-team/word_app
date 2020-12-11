@@ -12,13 +12,18 @@ export default function Index() {
       <Header/>
       <WeekCondition/>
       <EachData/>
-      <TextData />
+      <TextData text={"システム英単語"}/>
+      <TextData text={"ターゲット1900"}/>
       <Link href="/textSelection">
         <a>Go to textSelection page</a>
       </Link>
       <br></br>
       <Link href="/textInfo">
         <a>Go to textInfo page</a>
+      </Link>
+      <br></br>
+      <Link href="/test">
+        <a>Go to test page</a>
       </Link>
     </Container>
   );
