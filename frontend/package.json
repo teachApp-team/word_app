@@ -19,7 +19,10 @@
     "react-bootstrap": "^1.4.0",
     "react-chartjs-2": "^2.11.1",
     "react-dom": "latest",
-    "react-minimal-pie-chart": "^8.1.0"
+    "react-minimal-pie-chart": "^8.1.0",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "dev": "next",

@@ -20,13 +20,13 @@ export default function EachLevelInfo(props) {
       <div style={{textAlign: "center", marginBottom:"30px"}}><h4>{props.level}</h4></div>
       <Grid container spacing={1} style={{textAlign: "center"}}>
         <Grid item xs={3}>
-          <InputLabel id="label">単語数</InputLabel>
-          <Select labelId="label" id="select" value="10">
-            <MenuItem value="10">10単語</MenuItem>
-            <MenuItem value="20">20単語</MenuItem>
-            <MenuItem value="30">30単語</MenuItem>
-            <MenuItem value="40">40単語</MenuItem>
-            <MenuItem value="50">50単語</MenuItem>
+          <InputLabel id="label" style={{fontSize: "12px"}}>単語数</InputLabel>
+          <Select labelId="label" id="select" value="10"  style={{fontSize: "13px"}}>
+            <MenuItem value="10" style={{fontSize: "12px"}}>10単語</MenuItem>
+            <MenuItem value="20" style={{fontSize: "12px"}}>20単語</MenuItem>
+            <MenuItem value="30" style={{fontSize: "12px"}}>30単語</MenuItem>
+            <MenuItem value="40" style={{fontSize: "12px"}}>40単語</MenuItem>
+            <MenuItem value="50" style={{fontSize: "12px"}}>50単語</MenuItem>
           </Select>
         </Grid>
         <Grid item xs={3}>
@@ -50,9 +50,9 @@ export default function EachLevelInfo(props) {
         <Grid container direction="column" justify="flex-start"  alignItems="stretc" spacing={1} style={{marginTop:"2%"}}>
           <Grid item sm={12}>
             <div style={{display:"flex",justifyContent: "center"}}>
-              <div style={{margin:"15px 1% 0px 1%", color:"red"}}>正解 10問</div>
-              <div style={{margin:"15px 1% 0px 1%", color:'blue'}}>不正解 15問</div>
-              <div style={{margin:"15px 1% 0px 1%", color:'#333333'}}>未学習 20問</div>
+              <div style={{margin:"15px 1% 0px 1%", color:"red", fontSize:"13px"}}>正解 10問</div>
+              <div style={{margin:"15px 1% 0px 1%", color:'blue', fontSize:"13px"}}>不正解 15問</div>
+              <div style={{margin:"15px 1% 0px 1%", color:'#333333', fontSize:"13px"}}>未学習 20問</div>
             </div>
           </Grid>
           <Grid item xs={12} style={{margin:"auto"}}>
@@ -64,7 +64,7 @@ export default function EachLevelInfo(props) {
             label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
             animate ={true}
             animationDuration ={400}
-            style={{fontSize: "8px", maxWidth: "200px"}}
+            style={{fontSize: "8px", maxWidth: "180px", minWidth: "170px"}}
             />
           </Grid>
         </Grid> 

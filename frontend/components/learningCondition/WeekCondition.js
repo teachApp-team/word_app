@@ -35,13 +35,15 @@ export default function WeekCondition() {
           suggestedMin: 0,
         }
       }]
-    }
+    },
+    responsive: true,
+    maintainAspectRatio: false
   };
   const [rechart, setRechart] = useState({labels: reXaxis, datasets: reYaxis});
   const [baroption, setBaroption] = useState( reOption );
 
   return(
-    <div style={{margin: "20px auto"}}>
+    <div style={{margin: "20px auto", minHeight: "350px", maxWidth: "700px"}}>
       <Bar data={rechart} options={baroption} />
     </div>
   );

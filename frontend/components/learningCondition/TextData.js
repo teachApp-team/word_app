@@ -2,7 +2,8 @@ import React, {  useState } from 'react';
 import { Bar, Pie } from 'react-chartjs-2';
 import { Card, CardActionArea, CardContent, Typography, Container, Button, CardActions, List, ListItem, ListItemText} from '@material-ui/core';
 
-export default function TextData() {
+export default function TextData(props) {
+  const text = props.text;
   const pieData = {
     labels: ["正解", "未習得", "不正解"],
       datasets: [{
@@ -18,13 +19,13 @@ export default function TextData() {
   const pieOption = {
     title: {
       display: true,
-      text: 'システム英単語'
+      text: text
     }
   }
   const [pierechart, setPierechart] = useState( pieData );
   const [pieoption, setPieoption] = useState( pieOption );
   return(
-    <div style={{maxWidth: "800px", margin: "20px auto"}}>
+    <div style={{maxWidth: "600px", margin: "20px auto"}}>
       <Pie data={pierechart} options={pieoption}  />
     </div>
   );
