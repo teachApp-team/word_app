@@ -7,8 +7,8 @@ import IconGroup from '../Layout/IconGroup';
 
 export default function LearningTexts() {
   return(
-    <div style={{overflowX:"auto", width:"100%", display: "flex", overflowScrolling: "touch" }}>
-      <Card style={{display:"inline-block", width: "200px", flexShrink: 0, margin: "0px 15px"}}>
+    <div style={{overflowX:"auto", width:"100%", display: "flex", overflowScrolling: "touch", padding:"10px" }}>
+      <Card style={{display:"inline-block", width: "200px", flexShrink: 0, marginRight: "30px"}}>
         <CardActionArea>
           <CardContent>
             <CardMedia
@@ -32,14 +32,14 @@ export default function LearningTexts() {
           </Button>
         </CardActions>
       </Card>
-      <Card style={{display:"inline-block", width: "200px", flexShrink: 0, margin: "0px 15px"}}>
+      <Card style={{display:"inline-block", width: "200px", flexShrink: 0, marginRight: "30px"}}>
         <CardActionArea>
           <CardContent>
             <CardMedia
               component="img"
               alt="Contemplative Reptile"
               height="140"
-              image="/static/texts/text.jpg"
+              image="/static/texts/text1.jpg"
               title="Contemplative Reptile"
             />
             <Typography gutterBottom variant="h6" component="h5">
