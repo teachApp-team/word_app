@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_13_022941) do
+ActiveRecord::Schema.define(version: 2020_12_13_033943) do
 
   create_table "levels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,46 @@ ActiveRecord::Schema.define(version: 2020_12_13_022941) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["word_book_id"], name: "index_levels_on_word_book_id"
+  end
+
+  create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.boolean "is_correct"
+    t.bigint "student_id", null: false
+    t.bigint "test_id", null: false
+    t.bigint "word_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_results_on_student_id"
+    t.index ["test_id"], name: "index_results_on_test_id"
+    t.index ["word_id"], name: "index_results_on_word_id"
+  end
+
+  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "exp_point", default: 0
+    t.bigint "teacher_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["teacher_id"], name: "index_students_on_teacher_id"
+  end
+
+  create_table "teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "correct_count"
+    t.integer "incorrect_count"
+    t.bigint "student_id", null: false
+    t.bigint "level_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["level_id"], name: "index_tests_on_level_id"
+    t.index ["student_id"], name: "index_tests_on_student_id"
   end
 
   create_table "word_books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -40,5 +80,11 @@ ActiveRecord::Schema.define(version: 2020_12_13_022941) do
   end
 
   add_foreign_key "levels", "word_books"
+  add_foreign_key "results", "students"
+  add_foreign_key "results", "tests"
+  add_foreign_key "results", "words"
+  add_foreign_key "students", "teachers"
+  add_foreign_key "tests", "levels"
+  add_foreign_key "tests", "students"
   add_foreign_key "words", "levels"
 end
