@@ -8,7 +8,7 @@ import IconGroup from '../Layout/IconGroup';
 export default function LearningTexts() {
   return(
     <div style={{overflowX:"auto", width:"100%", display: "flex", overflowScrolling: "touch", padding:"10px" }}>
-      <Card style={{display:"inline-block", width: "200px", flexShrink: 0, marginRight: "30px"}}>
+      <Card style={{display:"inline-block", maxWidth: "200px", flexShrink: 0, marginRight: "30px"}}>
         <CardActionArea>
           <CardContent>
             <CardMedia
@@ -26,13 +26,13 @@ export default function LearningTexts() {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions className="display-center">
-          <Button size="small" color="primary">
+        <CardActions  style={{padding: "auto"}}>
+          <Button  href='/textInfo' style={{margin: "auto"}} size="small" color="primary">
             学習する
           </Button>
         </CardActions>
       </Card>
-      <Card style={{display:"inline-block", width: "200px", flexShrink: 0, marginRight: "30px"}}>
+      <Card style={{display:"inline-block", maxWidth: "200px", flexShrink: 0, marginRight: "30px"}}>
         <CardActionArea>
           <CardContent>
             <CardMedia
@@ -51,12 +51,12 @@ export default function LearningTexts() {
           </CardContent>
         </CardActionArea>
         <CardActions className="display-center">
-          <Button size="small" color="primary">
+          <Button  href='/textInfo' style={{margin: "auto"}} size="small" color="primary">
             学習する
           </Button>
         </CardActions>
       </Card>
-      <Card style={{display:"inline-block", width: "200px", flexShrink: 0}}>
+      <Card style={{display:"inline-block", maxWidth: "200px", flexShrink: 0}}>
         <CardActionArea>
           <CardContent>
             <CardMedia
@@ -75,7 +75,7 @@ export default function LearningTexts() {
           </CardContent>
         </CardActionArea>
         <CardActions className="display-center">
-          <Button size="small" color="primary">
+          <Button href='/textInfo' style={{margin: "auto"}}  size="small" color="primary">
             学習する
           </Button>
         </CardActions>

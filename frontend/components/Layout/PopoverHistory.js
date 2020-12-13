@@ -18,7 +18,7 @@ export default function PopoverHistory() {
   return(
     <div  style={{width:"230px"}} className={classes.typography}>
       <div style={{textAlign:"center"}}>
-        <h3 style={{margin:"5px"}}>学習状況</h3>
+        <h5 style={{margin:"5px"}}>学習状況</h5>
       </div>
       <div> 
         <Grid container spacing={1}>
@@ -48,7 +48,7 @@ export default function PopoverHistory() {
       </div>
       <Divider /> 
       <div style={{textAlign:"center"}}>
-        <Button variant="contained" size="small"style={{marginTop:"10px"}}>学習状況詳細</Button>
+        <Button href="/learningCondition" variant="contained" size="small"style={{marginTop:"10px"}}>学習状況詳細</Button>
       </div>
     </div>
   );
