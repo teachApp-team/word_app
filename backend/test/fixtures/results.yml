@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  is_correct: false
+  student: one
+  test: one
+  word: one
+
+two:
+  is_correct: false
+  student: two
+  test: two
+  word: two
