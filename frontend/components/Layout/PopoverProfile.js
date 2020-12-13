@@ -22,19 +22,19 @@ export default function PopoverProfile() {
           <Avatar alt="Kosuke Fujita" src="/static/profile/image.jpg" className={classes.large}  />
         </Grid>
         <Grid item xs={8}>
-          <h3 style={{margin:0}}>Kosuke Fujita</h3>
+          <h5 style={{margin:0}}>Kosuke Fujita</h5>
           <div>大学4年</div>
         </Grid>
       </Grid>
       <div>
         <div style={{padding:"20px", textAlign:"center"}}>
-          <h4 style={{margin:0}}>担当の先生</h4>
-          <h3 style={{margin:0}}>HiroHaru Hara</h3>
+          <h6 style={{margin:0}}>担当の先生</h6>
+          <h6 style={{margin:0}}>HiroHaru Hara</h6>
         </div>
       </div>
       <div>
-        <Button variant="contained" size="small" style={{margin:"10px"}}>プロフィール編集</Button>
-        <Button variant="contained" size="small"style={{margin:"10px"}}>ログアウト</Button>
+        <Button variant="contained" size="small" style={{margin:"5px"}}>プロフィール編集</Button>
+        <Button variant="contained" size="small"style={{margin:"5px"}}>ログアウト</Button>
       </div>
     </div>
   );
