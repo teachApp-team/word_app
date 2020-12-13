@@ -11,13 +11,19 @@ import Link from 'next/link'
 import style from '../static/Style';
 import { ProgressBar } from 'react-bootstrap';
 import { nextTest } from '../store';
-
+import axios from 'axios';
 
 class Index extends Component {
   constructor(props) {
     super(props);
     qnumber:0;
     this.doNext = this.doNext.bind(this);
+  }
+  componentDidMount(){
+    console.log("Hello")
+    axios.get("http://localhost:8000/api/v1/tests/start").then( res => {
+      console.log(res)
+    })
   }
   doNext(e){ 
     let action = nextTest();
