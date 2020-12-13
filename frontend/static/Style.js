@@ -49,9 +49,7 @@ export default <style jsx>{`
 }
 .batsu {
   width: 100px;
-  /*枠の大きさ*/
   height: 100px;
-  /*枠の大きさ*/
   position: relative;
   text-align: center;
   margin: 0 auto;
@@ -60,9 +58,7 @@ export default <style jsx>{`
 .batsu::before, .batsu::after {
   content: "";
   width: 100%;
-  /*バツ線の長さ*/
   height: 10px;
-  /*バツ線の太さ*/
   background: blue;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
@@ -86,13 +82,11 @@ export default <style jsx>{`
   width: 100px;
   height: 100px;
   border: 10px solid red;
-  /* ←上下20pxのボーダー */
   background-color: #fff;
   border-radius: 50%;
   margin: 0 auto;
   text-align: center;
   line-height: 80px;
-  /* ←円の高さ100px - 上下のボーダー20px */
 }
 
 `}</style>

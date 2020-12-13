@@ -23,7 +23,7 @@ export default function Header() {
   return(
   <AppBar position="static">
     <Toolbar>
-      <Button className={classes.button} variant="contained">Word App</Button>
+      <Button href="/textSelection" className={classes.button} variant="contained">Word App</Button>
       <div className={classes.iconGroup}>
         < IconGroup />
       </div>

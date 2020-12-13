@@ -18,7 +18,7 @@ export default function PopoverMessage() {
   return(
     <div className={classes.typography}>
       <div style={{textAlign:"center"}}>
-        <h3 style={{margin:"5px"}}>最新メッセージ</h3>
+        <h6 style={{margin:"5px"}}>最新メッセージ</h6>
       </div>
       <div>
         <Grid container spacing={1}>
