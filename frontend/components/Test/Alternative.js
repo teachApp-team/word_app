@@ -17,10 +17,10 @@ class Alternative extends Component {
     return(
       <div>
         <ul className="alternative-ul">
-          <li  onClick={this.doCheck} id="t">{this.props.a[0]}</li>
-          <li  onClick={this.doCheck} id="f">{this.props.a[1]}</li>
-          <li  onClick={this.doCheck} id="f">{this.props.a[2]}</li>
-          <li  onClick={this.doCheck} id="f">{this.props.a[3]}</li>
+          <li  onClick={this.doCheck} id={this.props.a[0][1]}>{this.props.a[0][0]}</li>
+          <li  onClick={this.doCheck} id={this.props.a[1][1]}>{this.props.a[1][0]}</li>
+          <li  onClick={this.doCheck} id={this.props.a[2][1]}>{this.props.a[2][0]}</li>
+          <li  onClick={this.doCheck} id={this.props.a[3][1]}>{this.props.a[3][0]}</li>
         </ul>
         <div  style={{textAlign:"center"}}>
           <Button onClick={this.doCheck} id="f" size="small" variant="contained">わからない</Button>
