@@ -41,6 +41,10 @@ class Word < ApplicationRecord
     end
     words
   end
+
+  def wrong_count(student_id)
+    results.where(student_id: student_id, is_correct: false).length
+  end
 end
 
 
