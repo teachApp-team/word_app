@@ -1,38 +1,28 @@
 import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import axios from 'axios';
 
-const wordData = [
-  {English:'apple', Japanese:'りんご', No:1},
-  {English:'banana', Japanese:'バナナ', No:2},
-  {English:'chocolate', Japanese:'チョコレート', No:3},
-  {English:'red', Japanese:'赤', No:4},
-  {English:'white', Japanese:'白', No:5},
-  {English:'apple', Japanese:'りんご', No:1},
-  {English:'banana', Japanese:'バナナ', No:2},
-  {English:'chocolate', Japanese:'チョコレート', No:3},
-  {English:'red', Japanese:'赤', No:4},
-  {English:'white', Japanese:'白', No:5}
-]
-const alternative = ["正解", "不正解1", "不正解2", "不正解3"]
 
 const initial = {
-  // 単語ステート
-  data: wordData,
+  data: [],
   check: "NON",
-  question: wordData[0].English,
-  answer: wordData[0].Japanese,
-  alternative: alternative,
+  question: ["問題作成中"],
+  answer: ["問題作成中"],
+  alternative: ["選択肢作成中","選択肢作成中","選択肢作成中","選択肢作成中"],
   correct:0,
   wrong:0,
   status: "question",
   questioncount: 1,
   timelimit: 100,
+  loading: false,
 }
 
 function counterReducer (state = initial, action) {
   switch (action.type) {
     // 単語reducer
+    case 'GET':
+      return getTestDataReduce(state, action);
     case 'NEXT':
       return nextReduce(state, action);
     case 'CHECK':
@@ -60,15 +50,44 @@ function randomSelect(array, num)
   return newArray;
 }
 
+// テストデータ取得処理
+function getTestDataReduce(state, action) {
+  let d = action.data;
+  let a = action.alternative
+  console.log("Reduce動きました")
+  console.log(d)
+  return {
+    data: d,
+    check:"NON",
+    question: d[0][0].english,
+    answer: d[0][0].japanese,
+    alternative: a,
+    correct:state.correct,
+    wrong:state.wrong,
+    status: "question",
+    questioncount: 1,
+    timelimit:100,
+    loading: true
+  }
+}
 
 // テストのreduce処理
 function nextReduce(state, action) {
   let q = state.questioncount + 1;
+  let n = state.questioncount
+  console.log("nextReduce動きます")
+  let alternative = [[state.data[n][0].japanese,"t"], [state.data[n][1].japanese,"f"], [state.data[n][2].japanese,"f"], [state.data[n][3].japanese,"f"]]
+  for(var i = alternative.length - 1; i > 0; i--){
+    var rand = Math.floor(Math.random() * (i + 1));
+    [alternative[i], alternative[rand]] = [alternative[rand], alternative[i]];
+  }
+  console.log("選択肢シャッフル後");
+  console.log(alternative);
   return {
-    data:state.data,
+    data: state.data,
     check:"NON",
-    question: state.data[state.questioncount].English,
-    answer: state.data[state.questioncount].Japanese,
+    question: state.data[n][0].english,
+    answer: state.data[n][0].japanese,
     alternative: alternative,
     correct:state.correct,
     wrong:state.wrong,
@@ -103,6 +122,20 @@ function checkReduce(state, action) {
     timelimit:0,
   }
 }
+
+export function getTestData(data) {
+  let alternative = [[data[0][0].japanese,"t"], [data[0][1].japanese,"f"], [data[0][2].japanese,"f"], [data[0][3].japanese,"f"]]
+  for(var i = alternative.length - 1; i > 0; i--){
+    var rand = Math.floor(Math.random() * (i + 1));
+    [alternative[i], alternative[rand]] = [alternative[rand], alternative[i]];
+  }
+  return {
+    type: 'GET',
+    data: data,
+    alternative : alternative
+  }
+}
+
 
 export function nextTest() {
   return {
