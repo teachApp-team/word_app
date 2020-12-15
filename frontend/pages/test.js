@@ -10,19 +10,21 @@ import { connect } from 'react-redux';
 import Link from 'next/link'
 import style from '../static/Style';
 import { ProgressBar } from 'react-bootstrap';
-import { nextTest } from '../store';
+import { nextTest, getTestData } from '../store';
 import axios from 'axios';
 
 class Index extends Component {
   constructor(props) {
     super(props);
-    qnumber:0;
     this.doNext = this.doNext.bind(this);
   }
   componentDidMount(){
-    console.log("Hello")
+    console.log("componentDidMount動きました")
     axios.get("http://localhost:8000/api/v1/tests/start").then( res => {
-      console.log(res)
+    console.log('データ取得')
+    let data = res.data;
+    let action = getTestData(data);
+    this.props.dispatch(action);
     })
   }
   doNext(e){ 
@@ -30,6 +32,7 @@ class Index extends Component {
     this.props.dispatch(action);
   }
   render(){
+    console.log("render動きました");
     return (
       <Container disableGutters={true}>
         {style}
@@ -39,8 +42,8 @@ class Index extends Component {
           <ResultInfo />
           <Question q={this.props.question}/>
           {this.props.status == "question" &&(
-            <Alternative a={this.props.alternative}/>
-          )}
+          <Alternative a={this.props.alternative}/>
+            )} 
           {this.props.status == "answer" &&(
             <div style={{textAlign:"center"}}>
               <Judge/>
@@ -51,7 +54,7 @@ class Index extends Component {
                 <Button size="small" href="/afterTest" variant="contained">終了する</Button>
               )}
             </div>
-          )}
+          )} 
         </Container>
 
 
