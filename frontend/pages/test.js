@@ -18,21 +18,27 @@ class Index extends Component {
     super(props);
     this.doNext = this.doNext.bind(this);
   }
-  componentDidMount(){
-    console.log("componentDidMount動きました")
-    axios.get("http://localhost:8000/api/v1/tests/start").then( res => {
-    console.log('データ取得')
-    let data = res.data;
-    let action = getTestData(data);
-    this.props.dispatch(action);
-    })
-  }
+  
   doNext(e){ 
+    // console.log("doNext関数動きます");
+    // console.log(this.props.question_word_id,this.props.test_id ,this.props.check)
+    // axios.post("http://localhost:8000/api/v1/results/create", {
+    //   word_id: this.props.question_word_id,
+    //   test_id: this.props.test_id,
+    //   is_correct: this.props.check
+    // }).then(function (response) {
+    //   console.log("データ送信完了");
+    //   console.log(response);
+    // })
+    console.log(this.props.question_word_id,this.props.test_id ,this.props.check)
     let action = nextTest();
     this.props.dispatch(action);
   }
   render(){
     console.log("render動きました");
+    console.log(this.props.test_id);
+    const testID =  this.props.test_id;
+    console.log(testID);
     return (
       <Container disableGutters={true}>
         {style}
@@ -47,11 +53,11 @@ class Index extends Component {
           {this.props.status == "answer" &&(
             <div style={{textAlign:"center"}}>
               <Judge/>
-              {this.props.data.length != this.props.questioncount &&(
+              {this.props.data.length -1 != this.props.questioncount &&(
                 <Button size="small" onClick={this.doNext} variant="contained">次の問題</Button>
               )} 
-              { this.props.data.length == this.props.questioncount &&(
-                <Button size="small" href="/afterTest" variant="contained">終了する</Button>
+              { this.props.data.length -1 == this.props.questioncount &&(
+                <Button size="small" href={'/afterTest/' + String(this.props.test_id)} variant="contained">終了する</Button>
               )}
             </div>
           )} 
@@ -70,7 +76,7 @@ class Index extends Component {
           <a>Go to learningCondition page</a>
         </Link>
         <br></br>
-        <Link href="/afterTest">
+        <Link  href={'/afterTest/' + String(this.props.test_id)} >
           <a>Go to afterTest page</a>
         </Link>
       </Container>

@@ -2,18 +2,22 @@ import React,  { Component }  from 'react';
 import { connect } from 'react-redux';
 import { checkTest } from '../../store';
 import {Container,Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@material-ui/core';
-
+import axios from 'axios';
+import { nextTest, getTestData } from '../../store';
 
 class Question extends Component {
   constructor(props) {
     super(props);
     qnumber:0;
-    this.doCheck = this.doCheck.bind(this);
   }
-  doCheck(e){ 
-    var choise = e.target.id;
-    let action = checkTest(choise);
+  componentDidMount(){
+    console.log("componentDidMount動きました")
+    axios.get("http://localhost:8000/api/v1/tests/start").then( res => {
+    console.log('データ取得')
+    let data = res.data;
+    let action = getTestData(data);
     this.props.dispatch(action);
+    })
   }
   render(){
     return(

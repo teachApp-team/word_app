@@ -3,8 +3,8 @@
 # Table name: tests
 #
 #  id              :bigint           not null, primary key
-#  correct_count   :integer          default(0)
-#  incorrect_count :integer          default(0)
+#  correct_count   :integer
+#  incorrect_count :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  level_id        :bigint           not null
