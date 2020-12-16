@@ -12,7 +12,7 @@ class Api::V1::TestsController < ApplicationController
     @results = @test.words.map do |w|
       {
         japanese: w.japanese,
-        engligh: w.english,
+        englifh: w.english,
         part: w.part,
         wrong_count: w.wrong_count(1)
       }
