@@ -3,10 +3,9 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import axios from 'axios';
 
-
 const initial = {
   data: [],
-  check: "NON",
+  check: true,
   question: ["問題作成中"],
   answer: ["問題作成中"],
   alternative: ["選択肢作成中","選択肢作成中","選択肢作成中","選択肢作成中"],
@@ -15,7 +14,8 @@ const initial = {
   status: "question",
   questioncount: 1,
   timelimit: 100,
-  loading: false,
+  question_word_id: 0,
+  test_id: 0,
 }
 
 function counterReducer (state = initial, action) {
@@ -32,23 +32,6 @@ function counterReducer (state = initial, action) {
   }
 }
 
-// 選択肢作成のための処理
-function randomSelect(array, num)
-{
-  let newArray = [];
-  
-  while(newArray.length < num && array.length > 0)
-  {
-    // 配列からランダムな要素を選ぶ
-    const rand = Math.floor(Math.random() * array.length);
-    // 選んだ要素を別の配列に登録する
-    newArray.push(array[rand]);
-    // もとの配列からは削除する
-    array.splice(rand, 1);
-  }
-  
-  return newArray;
-}
 
 // テストデータ取得処理
 function getTestDataReduce(state, action) {
@@ -56,6 +39,8 @@ function getTestDataReduce(state, action) {
   let a = action.alternative
   console.log("Reduce動きました")
   console.log(d)
+  console.log("テストID")
+  console.log(d.slice(-1)[0])
   return {
     data: d,
     check:"NON",
@@ -67,7 +52,8 @@ function getTestDataReduce(state, action) {
     status: "question",
     questioncount: 1,
     timelimit:100,
-    loading: true
+    question_word_id: d[0][0].id,
+    test_id: d.slice(-1)[0],
   }
 }
 
@@ -94,6 +80,8 @@ function nextReduce(state, action) {
     status: "question",
     questioncount: q,
     timelimit:100,
+    question_word_id: state.data[n][0].id,
+    test_id: state.test_id,
   }
 }
 // テスト答え合わせのreduce
@@ -101,14 +89,16 @@ function checkReduce(state, action) {
   let c = action.choise;
   let check, correct, wrong;
   if (c=="t"){
-    check = "correct";
+    check = true;
     correct = state.correct + 1;
     wrong = state.wrong;
   }else{
-    check = "wrong";
+    check = false;
     correct = state.correct;
     wrong = state.wrong + 1;
   }
+  console.log("checkReduce動きます")
+  console.log(check)
   return {
     data:state.data,
     check: check,
@@ -120,6 +110,8 @@ function checkReduce(state, action) {
     status: "answer",
     questioncount: state.questioncount,
     timelimit:0,
+    question_word_id: state.question_word_id,
+    test_id: state.test_id,
   }
 }
 
@@ -149,6 +141,7 @@ export function checkTest(choise) {
     choise: choise
   }
 }
+
 
 
 export function initStore(state = initial) {

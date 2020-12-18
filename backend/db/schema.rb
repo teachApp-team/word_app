@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2020_12_13_033943) do
   end
 
   create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "correct_count", default: 0
-    t.integer "incorrect_count", default: 0
+    t.integer "correct_count"
+    t.integer "incorrect_count"
     t.bigint "student_id", null: false
     t.bigint "level_id", null: false
     t.datetime "created_at", precision: 6, null: false
