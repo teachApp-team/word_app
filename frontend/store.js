@@ -1,7 +1,5 @@
-import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import axios from 'axios';
 
 const initial = {
   data: [],
@@ -71,7 +69,7 @@ function nextReduce(state, action) {
   console.log(alternative);
   return {
     data: state.data,
-    check:"NON",
+    check: state.check,
     question: state.data[n][0].english,
     answer: state.data[n][0].japanese,
     alternative: alternative,

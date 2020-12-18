@@ -20,16 +20,6 @@ class Index extends Component {
   }
   
   doNext(e){ 
-    // console.log("doNext関数動きます");
-    // console.log(this.props.question_word_id,this.props.test_id ,this.props.check)
-    // axios.post("http://localhost:8000/api/v1/results/create", {
-    //   word_id: this.props.question_word_id,
-    //   test_id: this.props.test_id,
-    //   is_correct: this.props.check
-    // }).then(function (response) {
-    //   console.log("データ送信完了");
-    //   console.log(response);
-    // })
     console.log(this.props.question_word_id,this.props.test_id ,this.props.check)
     let action = nextTest();
     this.props.dispatch(action);
