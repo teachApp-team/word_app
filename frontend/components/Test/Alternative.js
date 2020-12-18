@@ -11,20 +11,27 @@ class Alternative extends Component {
   }
   doCheck(e){ 
     console.log("doCheck関数動きます");
-    console.log(this.props.question_word_id,this.props.test_id ,this.props.check)
+    let check;
+    var choise = e.target.id;
+    let action = checkTest(choise);
+    this.props.dispatch(action);
+    if (choise=="t"){
+      check = true;
+    }else{
+      check = false;
+    }
+    console.log(this.props.question_word_id,this.props.test_id ,check)
     axios.post("http://localhost:8000/api/v1/results/create", {
       word_id: this.props.question_word_id,
       test_id: this.props.test_id,
-      is_correct: this.props.check
+      is_correct: check
     }).then(function (response) {
       console.log("データ送信完了");
       console.log(response);
     })
-    var choise = e.target.id;
-    let action = checkTest(choise);
-    this.props.dispatch(action);
   }
   render(){
+    console.log(this.props.a[0][1]);
     return(
       <div>
         <ul className="alternative-ul">

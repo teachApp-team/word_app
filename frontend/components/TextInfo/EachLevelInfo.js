@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {Select, Container,Grid,Typography, Button, CardContent, CardMedia, Card, CardActionArea,CardActions, Paper} from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBook, faMedal, faPencilAlt, faCommentDots, faUser} from "@fortawesome/free-solid-svg-icons";
@@ -15,9 +15,20 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 
 export default function EachLevelInfo(props) {
+  let iniActiveLevel = { 
+    id: 0,
+    name: "level1",
+    correct:30,
+    wrong:20,
+    not:50,
+  };
+  const [activeLevel, setIniActiveLevel] = useState(iniActiveLevel);
+  console.log("EachLevelInfoレンダー");
   return(
     <Container disableGutters={true} style={{maxWidth: "550px", textAlign:"center"}}>
-      <div style={{textAlign: "center", marginBottom:"30px"}}><h4>{props.level}</h4></div>
+      <div style={{textAlign: "center", marginBottom:"30px"}}>
+        <span>{props.level}</span>
+      </div>
       <Grid container spacing={1} style={{textAlign: "center"}}>
         <Grid item xs={3}>
           <InputLabel id="label" style={{fontSize: "12px"}}>単語数</InputLabel>
@@ -47,7 +58,7 @@ export default function EachLevelInfo(props) {
       </Grid>
 
       <Card style={{margin:"4% auto", paddingBottom:"7%", backgroundColor:"#EEEEEE",maxWidth: "450px"}}>
-        <Grid container direction="column" justify="flex-start"  alignItems="stretc" spacing={1} style={{marginTop:"2%"}}>
+        <Grid container direction="column" justify="flex-start"  spacing={1} style={{marginTop:"2%"}}>
           <Grid item sm={12}>
             <div style={{display:"flex",justifyContent: "center"}}>
               <div style={{margin:"15px 1% 0px 1%", color:"red", fontSize:"13px"}}>正解 10問</div>
@@ -57,9 +68,9 @@ export default function EachLevelInfo(props) {
           </Grid>
           <Grid item xs={12} style={{margin:"auto"}}>
             <PieChart  startAngle= {270} data ={[
-              { title: '正解', value: 10, color: '#C13C37' },
-              { title: '不正解', value: 15, color: 'blue' },
-              { title: '未学習', value: 20, color: 'grey' },
+              { title: '正解', value: activeLevel.correct, color: '#C13C37' },
+              { title: '不正解', value: activeLevel.wrong, color: 'blue' },
+              { title: '未学習', value: activeLevel.not, color: 'grey' },
             ]}
             label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
             animate ={true}
