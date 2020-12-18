@@ -34,7 +34,7 @@ class Word < ApplicationRecord
   def self.get_testable(student_id:, limit:)
     question_words = testable(student_id: student_id, limit: limit)
     words = question_words.map do |word|
-      choices = where(part: word.part).to_a
+      choices = where(part: word.part).where.not(id: word.id).to_a
       choices = choices.shuffle.slice(0, 3)
       choices.unshift(word)
       choices

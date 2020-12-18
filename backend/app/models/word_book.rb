@@ -12,4 +12,16 @@
 class WordBook < ApplicationRecord
   has_many :levels
   has_many :words, through: :levels
+
+  def correct
+    20
+  end
+
+  def wrong
+    30
+  end
+
+  def not_yet
+    words.length - (correct + wrong)
+  end
 end
