@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       get 'tests/start', to: "tests#start"
       get 'tests/finish/:test_id', to: "tests#finish"
       post 'results/create', to: "results#create"
+      resources :word_books, only: [:show]
+      resources :levels, only: [:show]
     end
   end
 end
