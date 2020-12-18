@@ -2,6 +2,7 @@ import React,  { Component }  from 'react';
 import {Container, Box, Button} from '@material-ui/core';
 import { checkTest } from '../../store';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class Alternative extends Component {
   constructor(props) {
@@ -9,6 +10,16 @@ class Alternative extends Component {
     this.doCheck = this.doCheck.bind(this);
   }
   doCheck(e){ 
+    console.log("doCheck関数動きます");
+    console.log(this.props.question_word_id,this.props.test_id ,this.props.check)
+    axios.post("http://localhost:8000/api/v1/results/create", {
+      word_id: this.props.question_word_id,
+      test_id: this.props.test_id,
+      is_correct: this.props.check
+    }).then(function (response) {
+      console.log("データ送信完了");
+      console.log(response);
+    })
     var choise = e.target.id;
     let action = checkTest(choise);
     this.props.dispatch(action);

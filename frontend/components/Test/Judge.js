@@ -7,7 +7,7 @@ class Judge extends Component {
     super(props);
   }
   render(){
-    if (this.props.check=="correct"){
+    if (this.props.check== true){
       return(
         <Container style={{textAlign:"center"}}>
           <div className="seikai"></div>
@@ -18,7 +18,7 @@ class Judge extends Component {
           </div>    
         </Container>
       );
-    } else if (this.props.check=="wrong") { 
+    } else if (this.props.check== false) { 
       return(
         <Container style={{textAlign:"center"}}>
           <div className="batsu"></div>

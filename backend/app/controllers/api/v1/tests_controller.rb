@@ -8,7 +8,7 @@ class Api::V1::TestsController < ApplicationController
   end
 
   def finish
-    @test = Test.find(1)
+    @test = Test.find(params[:test_id])
     @results = @test.words.map do |w|
       {
         japanese: w.japanese,

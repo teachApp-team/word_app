@@ -8,6 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../constants/theme';
 import './styles.css'
 
+
 function MyApp(props) {
   const { Component, pageProps, reduxStore } = props;
 
@@ -29,7 +30,7 @@ function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Provider store={reduxStore}>
-          <Component {...pageProps} />
+            <Component {...pageProps} />
         </Provider>
       </ThemeProvider>
     </React.Fragment>
