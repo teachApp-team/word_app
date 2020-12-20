@@ -1,10 +1,7 @@
-import React, { useState,Component } from 'react';
+import React from 'react';
 import {Container,Grid,Typography, Button, CardContent, CardMedia, Card, CardActionArea,CardActions, Paper} from '@material-ui/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBook, faMedal, faPencilAlt, faCommentDots, faUser} from "@fortawesome/free-solid-svg-icons";
 import { makeStyles, withTheme } from '@material-ui/core/styles';
 import EachLevelInfo from '../TextInfo/EachLevelInfo';
-import { ProgressBar } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -52,29 +49,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleTabs() {
+export default function SimpleTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
-  let iniLevel = ["level1", "level2", "level3", "level4"];
   
-  const [level, setIniLevel] = useState(iniLevel);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   console.log("SimpleTabsレンダー");
   return (
     <div className={classes.root}  style={{marginTop:"40px"}}>
       <AppBar position="static" color="default">
         <Tabs indicatorColor="primary" textColor="primary" value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto" aria-label="scrollable auto tabs example" >
-          {level.map((row, index) => (
-            <Tab key={index} label={row} {...a11yProps(index)} />
+          {props.level.map((row, index) => (
+            <Tab key={index} label={row[1]} {...a11yProps(index)} />
           ))}
         </Tabs>
       </AppBar>
-        {level.map((row, index) => (
+        {props.level.map((row, index) => (
           <TabPanel key={index} value={value} index={index}>
-            <EachLevelInfo key={index} level={row} />
+            <EachLevelInfo key={index} id={row[0]} level={row[1]}/>
           </TabPanel>
         ))}
     </div>
