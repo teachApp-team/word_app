@@ -10,7 +10,6 @@ import { useRouter } from 'next/router';
 export default function EachLevelInfo(props) {
   const router = useRouter();     
 
-  console.log(props.id)
   let iniActiveLevel = { 
     id: 0,
     name: "level1",
@@ -30,7 +29,7 @@ export default function EachLevelInfo(props) {
 
   const clickButton = () => {
     router.push({
-        pathname:"../beforeTest/beforetest", 
+        pathname:"../test/beforetest", 
         query: {name: props.textName, type: String(props.id)}
       });
   }
