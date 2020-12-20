@@ -4,9 +4,12 @@ import { PieChart } from 'react-minimal-pie-chart';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 
 export default function EachLevelInfo(props) {
+  const router = useRouter();     
+
   console.log(props.id)
   let iniActiveLevel = { 
     id: 0,
@@ -24,6 +27,13 @@ export default function EachLevelInfo(props) {
     setIniActiveLevel(res.data);
     })
   }, []);
+
+  const clickButton = () => {
+    router.push({
+        pathname:"../beforeTest/beforetest", 
+        query: {name: props.textName, type: String(props.id)}
+      });
+  }
 
   console.log("EachLevelInfoレンダー");
   return(
@@ -43,7 +53,10 @@ export default function EachLevelInfo(props) {
           </Select>
         </Grid>
         <Grid item xs={3}>
-          <Button variant="contained" color="secondary" >
+          <Button
+            onClick={clickButton}
+            variant="contained" color="secondary"
+          >
             総復習
           </Button> 
         </Grid>

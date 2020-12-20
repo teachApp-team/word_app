@@ -12,7 +12,7 @@ class Question extends Component {
   }
   componentDidMount(){
     console.log("componentDidMount動きました")
-    axios.get("http://localhost:8000/api/v1/tests/start").then( res => {
+    axios.get("http://localhost:8000/api/v1/tests/start/"+ String(this.props.l)).then( res => {
     console.log('データ取得')
     let data = res.data;
     let action = getTestData(data);
