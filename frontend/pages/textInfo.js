@@ -32,7 +32,7 @@ export default function Index() {
     <Container disableGutters={true}>
       <Header/>
       <TextProgressInfo name={data.name} info={data.description} correct={correct_percent} wrong={wrong_percent}/>
-      <SelectLevel level={level} />
+      <SelectLevel textName={data.name} level={level} />
       <Link href="/textSelection">
         <a>Go to textSelection page</a>
       </Link>
