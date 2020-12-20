@@ -17,7 +17,8 @@ class Api::V1::WordBooksController < ApplicationController
         correct: 20,
         wrong: 10,
         not_yet: (level.words.length - 30)
-      }
+      },
+      levels: book.levels.pluck(:id, :name)
     }
     render json: response
   end

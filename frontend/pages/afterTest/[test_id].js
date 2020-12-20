@@ -15,12 +15,9 @@ export default function AfterTest(props) {
   let iniData = [{japanese:"日本語", english:"English", wrong_count:0}]
   const [data, setData] = useState(iniData);
   useEffect(() => {
-    // Update the document title using the browser API
     axios.get("http://localhost:8000/api/v1/tests/finish/"+ String(testId)).then( res => {
     console.log('結果データ取得')
     setData(res.data)
-    // const [data, setData] = useState(res.data);
-    // let data = res.data;
     console.log(data);
     })
   }, []);
