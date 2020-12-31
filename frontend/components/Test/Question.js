@@ -8,7 +8,6 @@ import { nextTest, getTestData } from '../../store';
 class Question extends Component {
   constructor(props) {
     super(props);
-    qnumber:0;
   }
   componentDidMount(){
     console.log("componentDidMount動きました")
@@ -20,6 +19,7 @@ class Question extends Component {
     })
   }
   render(){
+    console.log(this.props.question)
     return(
       <div className="box27">
         <span className="box-title">問題</span>
