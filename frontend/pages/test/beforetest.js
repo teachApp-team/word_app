@@ -1,16 +1,7 @@
 import React,  { useState, useEffect }  from 'react';
 import {Container, Card, CardContent,Button} from '@material-ui/core';
-import Tab from '../../components/Tab';
 import Header from '../../components/Layout/Header';
-import Question from '../../components/Test/Question';
-import Judge from '../../components/Test/Judge';
-import Alternative from '../../components/Test/Alternative';
-import ResultInfo from '../../components/Test/ResultInfo';
-import { connect } from 'react-redux';
-import Link from 'next/link'
 import style from '../../static/Style';
-import { ProgressBar } from 'react-bootstrap';
-import { nextTest } from '../../store';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
