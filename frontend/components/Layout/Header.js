@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import {AppBar, Button, Toolbar, Grid} from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBook, faMedal, faPencilAlt, faCommentDots, faUser} from "@fortawesome/free-solid-svg-icons";
 import { makeStyles, withTheme } from '@material-ui/core/styles';
 import IconGroup from '../Layout/IconGroup';
+import Alternative from '../Test/Alternative';
+import store from '../../store';
+import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
   iconGroup: {
@@ -17,13 +21,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+export default function Header(state) {
   const classes = useStyles();
-
+  const data = useSelector(state => state.questioncount)
   return(
   <AppBar position="static">
     <Toolbar>
-      <Button href="/textSelection" className={classes.button} variant="contained">Word App</Button>
+      <Link href="/textSelection">
+        <Button className={classes.button} variant="contained">Word App</Button>
+      </Link>
+      {data}
       <div className={classes.iconGroup}>
         < IconGroup />
       </div>

@@ -1,7 +1,7 @@
 class Api::V1::TestsController < ApplicationController
 
   def start
-    @level = Level.find(1) 
+    @level = Level.find(params[:level_id]) 
     @test = Test.create!(student_id: 1, level_id: @level.id)
     @words = @level.words.get_testable(student_id: 1, limit: 10)
     render json: @words.push(@test.id)

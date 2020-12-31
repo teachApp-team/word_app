@@ -1,17 +1,20 @@
 import React,  { Component }  from 'react';
 import {Container, Box, Button} from '@material-ui/core';
-import Tab from '../components/Tab';
-import Header from '../components/Layout/Header';
-import Question from '../components/Test/Question';
-import Judge from '../components/Test/Judge';
-import Alternative from '../components/Test/Alternative';
-import ResultInfo from '../components/Test/ResultInfo';
+import Tab from '../../components/Tab';
+import Header from '../../components/Layout/Header';
+import Question from '../../components/Test/Question';
+import Judge from '../../components/Test/Judge';
+import Alternative from '../../components/Test/Alternative';
+import ResultInfo from '../../components/Test/ResultInfo';
 import { connect } from 'react-redux';
 import Link from 'next/link'
-import style from '../static/Style';
+import style from '../../static/Style';
 import { ProgressBar } from 'react-bootstrap';
-import { nextTest, getTestData } from '../store';
+import { nextTest, getTestData } from '../../store';
 import axios from 'axios';
+import { withRouter } from 'next/router';
+import Router  from 'next/router';
+
 
 class Index extends Component {
   constructor(props) {
@@ -24,6 +27,15 @@ class Index extends Component {
     let action = nextTest();
     this.props.dispatch(action);
   }
+
+  clickButton(id) {
+    console.log(id)
+    Router.push({
+      pathname:"../test/afterTest/", 
+      query: {test_id : String(id)}
+    });
+  }
+
   render(){
     console.log("render動きました");
     console.log(this.props.test_id);
@@ -36,7 +48,7 @@ class Index extends Component {
         <Container maxWidth="xs"  style={{padding:"20px"}}>
           <ProgressBar animated now={this.props.timelimit} label={`${5}秒`} />
           <ResultInfo />
-          <Question q={this.props.question}/>
+          <Question l={Router.query.id} q={this.props.question}/>
           {this.props.status == "question" &&(
           <Alternative a={this.props.alternative}/>
             )} 
@@ -47,7 +59,12 @@ class Index extends Component {
                 <Button size="small" onClick={this.doNext} variant="contained">次の問題</Button>
               )} 
               { this.props.data.length -1 == this.props.questioncount &&(
-                <Button size="small" href={'/afterTest/' + String(this.props.test_id)} variant="contained">終了する</Button>
+                <Button 
+                  size="small" 
+                  onClick={this.clickButton(this.props.test_id)} 
+                  // href={'../afterTest/' + String(this.props.test_id)} 
+                  variant="contained"
+                >終了する</Button>
               )}
             </div>
           )} 
@@ -66,7 +83,7 @@ class Index extends Component {
           <a>Go to learningCondition page</a>
         </Link>
         <br></br>
-        <Link  href={'/afterTest/' + String(this.props.test_id)} >
+        <Link  href={'../afterTest/' + String(this.props.test_id)} >
           <a>Go to afterTest page</a>
         </Link>
       </Container>
@@ -75,4 +92,4 @@ class Index extends Component {
 }
 
 Index = connect((state) => state)(Index);
-export default Index;
+export default withRouter(Index);

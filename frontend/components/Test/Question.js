@@ -8,11 +8,10 @@ import { nextTest, getTestData } from '../../store';
 class Question extends Component {
   constructor(props) {
     super(props);
-    qnumber:0;
   }
   componentDidMount(){
     console.log("componentDidMount動きました")
-    axios.get("http://localhost:8000/api/v1/tests/start").then( res => {
+    axios.get("http://localhost:8000/api/v1/tests/start/"+ String(this.props.l)).then( res => {
     console.log('データ取得')
     let data = res.data;
     let action = getTestData(data);
@@ -20,6 +19,7 @@ class Question extends Component {
     })
   }
   render(){
+    console.log(this.props.question)
     return(
       <div className="box27">
         <span className="box-title">問題</span>

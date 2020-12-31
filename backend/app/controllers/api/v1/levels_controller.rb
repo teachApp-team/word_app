@@ -11,4 +11,3 @@ class Api::V1::LevelsController < ApplicationController
     render json: response
   end
 end
-

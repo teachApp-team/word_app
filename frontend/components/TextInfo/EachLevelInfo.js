@@ -1,28 +1,39 @@
-import React, { Component, useState } from 'react';
-import {Select, Container,Grid,Typography, Button, CardContent, CardMedia, Card, CardActionArea,CardActions, Paper} from '@material-ui/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBook, faMedal, faPencilAlt, faCommentDots, faUser} from "@fortawesome/free-solid-svg-icons";
-import { makeStyles, withTheme } from '@material-ui/core/styles';
-import { ProgressBar } from 'react-bootstrap';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Box from '@material-ui/core/Box';
+import React, { useEffect, useState } from 'react';
+import {Select, Container,Grid, Button, CardContent, Card} from '@material-ui/core';
 import { PieChart } from 'react-minimal-pie-chart';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 
 export default function EachLevelInfo(props) {
+  const router = useRouter();     
+
   let iniActiveLevel = { 
     id: 0,
     name: "level1",
     correct:30,
     wrong:20,
-    not:50,
+    not_yet:50,
   };
   const [activeLevel, setIniActiveLevel] = useState(iniActiveLevel);
+
+  useEffect(() => {
+    axios.get("http://localhost:8000/api/v1/levels/"+ String(props.id)).then( res => {
+    console.log('レベルデータ取得');
+    console.log(res.data);
+    setIniActiveLevel(res.data);
+    })
+  }, []);
+
+  const clickButton = () => {
+    router.push({
+        pathname:"../test/beforetest", 
+        query: {name: props.textName, type: String(props.id)}
+      });
+  }
+
   console.log("EachLevelInfoレンダー");
   return(
     <Container disableGutters={true} style={{maxWidth: "550px", textAlign:"center"}}>
@@ -41,7 +52,10 @@ export default function EachLevelInfo(props) {
           </Select>
         </Grid>
         <Grid item xs={3}>
-          <Button variant="contained" color="secondary" >
+          <Button
+            onClick={clickButton}
+            variant="contained" color="secondary"
+          >
             総復習
           </Button> 
         </Grid>
@@ -70,7 +84,7 @@ export default function EachLevelInfo(props) {
             <PieChart  startAngle= {270} data ={[
               { title: '正解', value: activeLevel.correct, color: '#C13C37' },
               { title: '不正解', value: activeLevel.wrong, color: 'blue' },
-              { title: '未学習', value: activeLevel.not, color: 'grey' },
+              { title: '未学習', value: activeLevel.not_yet, color: 'grey' },
             ]}
             label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
             animate ={true}
