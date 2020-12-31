@@ -5,6 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 
 export default function EachLevelInfo(props) {
@@ -38,7 +39,11 @@ export default function EachLevelInfo(props) {
   return(
     <Container disableGutters={true} style={{maxWidth: "550px", textAlign:"center"}}>
       <div style={{textAlign: "center", marginBottom:"30px"}}>
-        <span>{props.level}</span>
+        {props.loading.loading ? (
+          <Skeleton animation="wave" />
+        ) : (
+          <span>{props.level}</span>
+        )}
       </div>
       <Grid container spacing={1} style={{textAlign: "center"}}>
         <Grid item xs={3}>

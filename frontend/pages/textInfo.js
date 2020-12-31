@@ -10,9 +10,11 @@ import axios from 'axios';
 export default function Index() {
   let iniLevel = [[1,"level1"], [2,"level2"], [3,"level3"], [4,"level4"]];
   let iniData = {id:1, name: "テキスト名", description:"サンプルのテキストです", correct:30, wrong:20, not_yet:50}
-  
+  let iniLoading = {loading: true};
+
   const [data, setData] = useState(iniData);
   const [level, setLevel] = useState(iniLevel);
+  const [loading, setLoading] = useState(iniLoading);
 
   let correct_percent = Math.floor(data.correct / (data.correct + data.wrong + data.not_yet) * 100);
   let wrong_percent = Math.floor(data.wrong / (data.correct + data.wrong + data.not_yet) * 100);
@@ -25,14 +27,23 @@ export default function Index() {
     setLevel(res.data.levels);
     console.log(data);
     console.log(level);
+    setLoading({ loading: false});
     })
   }, []);
   
   return (
     <Container disableGutters={true}>
       <Header/>
-      <TextProgressInfo name={data.name} info={data.description} correct={correct_percent} wrong={wrong_percent}/>
-      <SelectLevel textName={data.name} level={level} />
+      <TextProgressInfo 
+        name={data.name}
+        info={data.description} 
+        correct={correct_percent} 
+        wrong={wrong_percent}
+        loading={loading}/>
+      <SelectLevel 
+        textName={data.name}
+        level={level}
+        loading={loading} />
       <Link href="/textSelection">
         <a>Go to textSelection page</a>
       </Link>
