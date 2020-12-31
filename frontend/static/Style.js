@@ -89,4 +89,139 @@ export default <style jsx>{`
   line-height: 80px;
 }
 
+.imgContainer {
+  background-image: url("../static/profile/climb.jpg");
+  height: 740px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+}
+
+.borderFrame {
+  position: absolute;
+  border: 1px solid #fff;
+  top: 85px;
+  left: 95px;
+  width: calc(100% - 190px);
+  height: calc(100% - 100px);
+}
+
+
+.topJpMessageContainer {
+  position: absolute;
+  bottom: 80%;
+  color:  white;
+}
+
+.topEngMessageContainer {
+  position: absolute;
+  bottom: 15%;
+  color:  white;
+}
+
+.loginWrapper {
+  position: absolute;
+  color:  white;
+  bottom: 40%;
+  width: 100%;
+  text-align: center;
+  z-index: 1; 
+}
+
+
+nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 1; 
+  height: 650px;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  background: #fff;
+}
+
+.MenuToggleButton {
+  outline: none;
+  border: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: transparent;
+}
+.MenuToggleButton:focus {
+	outline:0;
+}
+
+.NavigationUl,
+.MenuItemLi {
+  margin: 0;
+  padding: 0;
+}
+
+.NavigationUl {
+  padding: 25px;
+  position: absolute;
+  top: 100px;
+  width: 350px;
+}
+
+.MenuItemLi {
+  list-style: none;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex: 40px 0;
+  margin-right: 7px;
+}
+
+.text-placeholder {
+  border-radius: 5px;
+  width: 200px;
+  height: 20px;
+  flex: 1;
+}
+
+
+@media screen and (max-width: 480px) {
+  .topJpMessageContainer {
+    position: absolute;
+    top: 5%;
+    color:  white;
+  }
+
+  .imgContainer {
+    height: 650px;
+  }
+  .borderFrame {
+    border: none;
+    top: 70px;
+    left: 20px;
+    width: calc(100% - 80px);
+    height: calc(100% - 80px);
+  }
+}
+
+
 `}</style>
