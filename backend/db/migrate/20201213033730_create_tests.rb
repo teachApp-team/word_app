@@ -3,7 +3,7 @@ class CreateTests < ActiveRecord::Migration[6.0]
     create_table :tests do |t|
       t.integer :correct_count, default: 0
       t.integer :incorrect_count, default: 0
-      t.references :student, null: false, foreign_key: true
+      # t.references :student, null: false, foreign_key: true, after: :student
       t.references :level, null: false, foreign_key: true
 
       t.timestamps

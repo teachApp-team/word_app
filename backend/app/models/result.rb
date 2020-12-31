@@ -6,7 +6,7 @@
 #  is_correct :boolean
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  student_id :bigint           not null
+#  student_id :bigint
 #  test_id    :bigint           not null
 #  word_id    :bigint           not null
 #
@@ -18,7 +18,6 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (student_id => students.id)
 #  fk_rails_...  (test_id => tests.id)
 #  fk_rails_...  (word_id => words.id)
 #
