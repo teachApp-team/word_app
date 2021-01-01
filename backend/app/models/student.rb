@@ -38,4 +38,7 @@ class Student < ApplicationRecord
   has_many :tests
   has_many :results
   belongs_to :teacher, optional: true
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+  include DeviseTokenAuth::Concerns::User
 end

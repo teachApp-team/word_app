@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'Student', at: 'auth'
+  mount_devise_token_auth_for 'Student', at: 'auth', controllers: {
+    registrations: 'auth/registrations',
+    sessions: 'auth/sessions',
+  }
   root 'top#home'
   namespace :api, { format: 'json' } do
     namespace :v1 do
