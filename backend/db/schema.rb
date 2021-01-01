@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_13_033943) do
+ActiveRecord::Schema.define(version: 2020_12_30_044358) do
 
   create_table "levels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -23,24 +23,44 @@ ActiveRecord::Schema.define(version: 2020_12_13_033943) do
 
   create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "is_correct"
-    t.bigint "student_id", null: false
     t.bigint "test_id", null: false
     t.bigint "word_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "student_id"
     t.index ["student_id"], name: "index_results_on_student_id"
     t.index ["test_id"], name: "index_results_on_test_id"
     t.index ["word_id"], name: "index_results_on_word_id"
   end
 
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "provider", default: "email", null: false
+    t.string "uid", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.boolean "allow_password_change", default: false
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.string "name"
+    t.string "nickname"
+    t.string "image"
     t.string "email"
-    t.integer "exp_point", default: 0
-    t.bigint "teacher_id"
+    t.text "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["teacher_id"], name: "index_students_on_teacher_id"
+    t.index ["confirmation_token"], name: "index_students_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_students_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+    t.index ["uid", "provider"], name: "index_students_on_uid_and_provider", unique: true
   end
 
   create_table "teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -51,12 +71,12 @@ ActiveRecord::Schema.define(version: 2020_12_13_033943) do
   end
 
   create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "correct_count"
-    t.integer "incorrect_count"
-    t.bigint "student_id", null: false
+    t.integer "correct_count", default: 0
+    t.integer "incorrect_count", default: 0
     t.bigint "level_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "student_id"
     t.index ["level_id"], name: "index_tests_on_level_id"
     t.index ["student_id"], name: "index_tests_on_student_id"
   end
@@ -80,11 +100,8 @@ ActiveRecord::Schema.define(version: 2020_12_13_033943) do
   end
 
   add_foreign_key "levels", "word_books"
-  add_foreign_key "results", "students"
   add_foreign_key "results", "tests"
   add_foreign_key "results", "words"
-  add_foreign_key "students", "teachers"
   add_foreign_key "tests", "levels"
-  add_foreign_key "tests", "students"
   add_foreign_key "words", "levels"
 end
