@@ -203,7 +203,15 @@ nav {
   flex: 1;
 }
 
-
+.TopContainer:before {
+  content:'';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to top, #0a2a43, transparent);
+  z-index: 100000;
+}
 @media screen and (max-width: 480px) {
   .topJpMessageContainer {
     position: absolute;
