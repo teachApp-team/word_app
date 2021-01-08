@@ -24,6 +24,25 @@ export default function AfterTest(props) {
     setLoading({ loading: false});
     })
   }, []);
+
+  function TableLine() {
+    return(
+      <TableRow >
+        <TableCell component="th" scope="row">
+          <Skeleton animation="wave" />
+        </TableCell>
+        <TableCell align="right">
+          <Skeleton animation="wave" />
+        </TableCell>
+        <TableCell align="right">
+          <Skeleton animation="wave" />
+        </TableCell>
+        <TableCell align="right">
+          <Skeleton animation="wave" />
+        </TableCell>
+      </TableRow>
+    );
+  }
   
   console.log(data);
   return (
@@ -42,48 +61,16 @@ export default function AfterTest(props) {
             </TableHead>
             {loading.loading ? (
               <TableBody>
-                <TableRow >
-                  <TableCell component="th" scope="row">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                </TableRow>
-                <TableRow >
-                  <TableCell component="th" scope="row">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                </TableRow>
-                <TableRow >
-                  <TableCell component="th" scope="row">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Skeleton animation="wave" />
-                  </TableCell>
-                </TableRow>
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
               </TableBody>
             ):(
               <TableBody>
