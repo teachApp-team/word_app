@@ -60,6 +60,16 @@ export default function LoginBox() {
       marginTop: "20px",
     }
   });
+
+  const doLogin = () => {
+    console.log('ログインボタンが押されました。')
+    const email = document.getElementById('student-login-email').value
+    const password = document.getElementById('student-login-password').value
+    console.log(email, password)
+    // const action = loginAction(23)
+    // dispatch(action)
+  }  
+
   const classes = useStyles();
 
   return (
@@ -79,7 +89,11 @@ export default function LoginBox() {
             <AccountCircle style={{ color: "blue" }} />
           </Grid>
           <Grid item>
-            <TextField className={classes.userTextField} id="input-with-icon-grid" color="primary" label="User Name" />
+            <TextField 
+              className={classes.userTextField}
+              id="student-login-email" 
+              color="primary" 
+              label="Mail Adress" />
           </Grid>
         </Grid>
       </motion.div>
@@ -92,7 +106,7 @@ export default function LoginBox() {
             <FormControl className={clsx(classes.margin, classes.textField)}>
               <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
               <Input
-                id="standard-adornment-password"
+                id="student-login-password"
                 type={values.showPassword ? 'text' : 'password'}
                 value={values.password}
                 onChange={handleChange('password')}
@@ -103,14 +117,14 @@ export default function LoginBox() {
       </motion.div>
       <motion.div  variants={item}>
         <Box my={4}>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={doLogin}>
             OK
           </Button>
         </Box>
       </motion.div>
       <motion.div  variants={item}>
         <Box my={4}>
-          <Link href="/auth/sign_up" mx={2}>
+          <Link href="../auth/sign_up" mx={2}>
             Click here to Sign UP
           </Link>
         </Box>
