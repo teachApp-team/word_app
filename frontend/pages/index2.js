@@ -81,6 +81,7 @@ export default function Index1() {
         <div  className={classes.topTitle}>
           <motion.div animate={{ scale: 0.5 }}  transition={{ duration: 0.5 }}>
             <Typography variant="h2">TEACH APP</Typography>
+            <Typography variant="h3">Login Form</Typography>
           </motion.div>
         </div>
         <div className={classes.loginWrapper}>
