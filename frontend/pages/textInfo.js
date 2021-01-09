@@ -18,7 +18,7 @@ export default function Index() {
 
   let correct_percent = Math.floor(data.correct / (data.correct + data.wrong + data.not_yet) * 100);
   let wrong_percent = Math.floor(data.wrong / (data.correct + data.wrong + data.not_yet) * 100);
-  
+
   useEffect(() => {
     axios.get("http://localhost:8000/api/v1/word_books/1").then( res => {
     console.log('教材データ取得');

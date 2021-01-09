@@ -17,7 +17,7 @@ export default function Column() {
           </CardContent>
         </CardActionArea>
         <CardActions className="display-center">
-          <Link href='/textInfo' >
+          <Link href='/columnInfo' >
             <Button style={{margin: "auto"}}  size="small" color="primary">学習する</Button>
           </Link>
         </CardActions>
@@ -34,7 +34,7 @@ export default function Column() {
           </CardContent>
         </CardActionArea>
         <CardActions className="display-center">
-          <Link href='/textInfo' >
+          <Link href='/columnInfo' >
             <Button style={{margin: "auto"}}  size="small" color="primary">学習する</Button>
           </Link>
         </CardActions>

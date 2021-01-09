@@ -10,7 +10,7 @@ export default function ColumnContent(props) {
     <div>
       {style}
       <div className="columnContentSubtitle">
-        <Typography gutterBottom variant="h6" component="h6">
+        <Typography className="subTitle" gutterBottom variant="h6" component="h6">
           {props.subtitle}
         </Typography>
       </div>
