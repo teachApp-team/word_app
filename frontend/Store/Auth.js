@@ -6,7 +6,6 @@ const initial = {
 }
 
 function authReducer (state = initial, action) {
-  console.log('大元のreducerは動いておりますかね')
   switch (action.type) {
     case 'LOGIN':
       return LoginReduce(state, action);
@@ -16,19 +15,19 @@ function authReducer (state = initial, action) {
 }
 
 async function loginReduce (state, action) {
-  console.log("LoginReduce動きまーーーす")
-  const response = await axios.post('http://localhost:8000/auth/sign_in', { email: "test2@gmail.com", password: "password" })
+  const response = await axios.post('http://localhost:8000/auth/sign_in', { email: action.email, password: action.password })
   console.log(response)
   return {
-    student_id: 1
+    // TODO: ここにIDを入れる
+    student_id: response
   }
 }
 
 export function loginAction(data) {
-  console.log('LoginAction動きまーす')
-  console.log(data)
   return {
-    type: 'LOGIN'
+    type: 'LOGIN',
+    email: data.email,
+    password: data.password
   }
 }
 

@@ -59,8 +59,10 @@ export default function Index(props) {
     console.log('ログインボタンが押されました。')
     const email = document.getElementById('student-login-email').value
     const password = document.getElementById('student-login-password').value
-    console.log(email, password)
-    const action = loginAction(23)
+    const action = loginAction({
+      email: email,
+      password: password,
+    })
     dispatch(action)
   }
 
