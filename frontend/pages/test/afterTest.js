@@ -1,14 +1,16 @@
 import React,  { useState, useEffect }  from 'react';
 import {Container,Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@material-ui/core';
-import Tab from '../../components/Tab';
 import Header from '../../components/Layout/Header';
 import Link from 'next/link'
-import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 
 export default function AfterTest(props) {
+  let iniLoading = {loading: true};
+  const [loading, setLoading] = useState(iniLoading);
+
   const router = useRouter()
   console.log(router)
   const testId = router.query.test_id
@@ -19,10 +21,30 @@ export default function AfterTest(props) {
     console.log('結果データ取得')
     setData(res.data)
     console.log(data);
+    setLoading({ loading: false});
     })
   }, []);
-  
 
+  function TableLine() {
+    return(
+      <TableRow >
+        <TableCell component="th" scope="row">
+          <Skeleton animation="wave" />
+        </TableCell>
+        <TableCell align="right">
+          <Skeleton animation="wave" />
+        </TableCell>
+        <TableCell align="right">
+          <Skeleton animation="wave" />
+        </TableCell>
+        <TableCell align="right">
+          <Skeleton animation="wave" />
+        </TableCell>
+      </TableRow>
+    );
+  }
+  
+  console.log(data);
   return (
     <Container disableGutters={true}>
       <Header/>
@@ -37,18 +59,33 @@ export default function AfterTest(props) {
                 <TableCell align="right">間違えた回数</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
-              {data.map((row, index) => (
-                <TableRow key={row.name}>
-                  <TableCell component="th" scope="row">
-                    {index + 1}
-                  </TableCell>
-                  <TableCell align="right">{row.engligh}</TableCell>
-                  <TableCell align="right">{row.japanese}</TableCell>
-                  <TableCell align="right">{row.wrong_count}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
+            {loading.loading ? (
+              <TableBody>
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+                <TableLine />
+              </TableBody>
+            ):(
+              <TableBody>
+                {data.map((row, index) => (
+                  <TableRow key={row.name}>
+                    <TableCell component="th" scope="row">
+                      {index + 1}
+                    </TableCell>
+                    <TableCell align="right">{row.englifh}</TableCell>
+                    <TableCell align="right">{row.japanese}</TableCell>
+                    <TableCell align="right">{row.wrong_count}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            )}
           </Table>
         </TableContainer>
       </Container>

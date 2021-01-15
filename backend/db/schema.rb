@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_050214) do
     t.index ["level_id"], name: "index_words_on_level_id"
   end
 
+  add_foreign_key "column_contents", "columns"
   add_foreign_key "levels", "word_books"
   add_foreign_key "results", "tests"
   add_foreign_key "results", "words"

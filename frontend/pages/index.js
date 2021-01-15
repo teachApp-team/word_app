@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef,useEffect,useState } from 'react';
 import { useDispatch } from "react-redux";
 import {Container, Box} from '@material-ui/core';
 import Tab from '../components/Tab';
@@ -9,6 +9,11 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { loginAction } from '../Store/Auth';
 import { connect } from 'react-redux';
+import { gsap } from "gsap";
+
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -21,6 +26,34 @@ const useStyles = makeStyles((theme) => ({
 export default function Index(props) {
   const [data, setData] = useState();
   const dispatch = useDispatch();
+  const el = useRef(null);
+
+  const ref = useRef();
+
+  useEffect(() => {
+    console.log(el.current);
+    console.log(ref.current);
+
+    gsap.fromTo(
+      el.current,
+      {
+        autoAlpha: 0
+      },
+      {
+        duration: 1,
+        autoAlpha: 1,
+        ease: "none",
+        scrollTrigger: {
+          id: `section-1`,
+          trigger: el.current,
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+          markers: true
+        }
+      }
+    );
+
+  });
 
   const doLogin = () => {
     console.log('ログインボタンが押されました。')
@@ -80,6 +113,25 @@ export default function Index(props) {
       <Link href="/test">
         <a>Go to test page</a>
       </Link>
+      <div ref={ref}>
+        <div>
+          <h1>Hey I'm on the screen</h1>
+        </div>
+      </div>
+      <div ref={el}>
+        <div>
+          こんにちは<br></br>こんにちは<br></br>こんにちは<br></br>こんにちは
+          こんにちは<br></br>こんにちは<br></br>こんにちは<br></br>こんにちは
+        </div>
+        <div>
+          こんにちは<br></br>こんにちは<br></br>こんにちは<br></br>こんにちは
+          こんにちは<br></br>こんにちは<br></br>こんにちは<br></br>こんにちは
+        </div>
+        <div>
+          こんにちは<br></br>こんにちは<br></br>こんにちは<br></br>こんにちは
+          こんにちは<br></br>こんにちは<br></br>こんにちは<br></br>こんにちは
+        </div>
+      </div>
     </Container>
   );
 }

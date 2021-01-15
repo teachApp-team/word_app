@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post 'results/create', to: "results#create"
       resources :word_books, only: [:show]
       resources :levels, only: [:show]
+      resources :columns, only: [:show]
     end
   end
 end

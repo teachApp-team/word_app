@@ -69,7 +69,12 @@ export default function SimpleTabs(props) {
       </AppBar>
         {props.level.map((row, index) => (
           <TabPanel key={index} value={value} index={index}>
-            <EachLevelInfo textName={props.textName} key={index} id={row[0]} level={row[1]}/>
+            <EachLevelInfo 
+              textName={props.textName}
+              key={index}
+              id={row[0]} 
+              level={row[1]}
+              loading={props.loading}/>
           </TabPanel>
         ))}
     </div>

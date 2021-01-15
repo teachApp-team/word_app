@@ -203,6 +203,41 @@ nav {
   flex: 1;
 }
 
+.TopContainer:before {
+  content:'';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to top, #0a2a43, transparent);
+  z-index: 100000;
+}
+.subTitle {
+	padding: 20px;
+	position: relative;
+}
+
+.subTitle::before, .subTitle::after {
+	content: '';
+	width: 30px;
+	height: 30px;
+	position: absolute;
+}
+
+.subTitle::before {
+	border-left: solid 2px #000000;
+	border-top: solid 2px #000000;
+	top: 0;
+	left: 0;
+}
+
+.subTitle::after {
+	border-right: solid 2px #000000;
+	border-bottom: solid 2px #000000;
+	bottom: 0;
+	right: 0;
+}
+
 
 @media screen and (max-width: 480px) {
   .topJpMessageContainer {
