@@ -11,6 +11,7 @@
 #  updated_at  :datetime         not null
 #
 class WordBook < ApplicationRecord
+  mount_uploader :image, ImageUploader
   has_many :levels
   has_many :words, through: :levels
 
