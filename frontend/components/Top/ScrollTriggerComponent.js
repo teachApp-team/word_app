@@ -16,7 +16,8 @@ export default function ScrollTriggerComponent()  {
   })
   const el1 = useRef(null);  
   const el2 = useRef(null);  
-  const el3 = useRef(null);  
+  const el3 = useRef(null);
+  
 
   function GetRef(){
     gsap.fromTo(el1.current,
