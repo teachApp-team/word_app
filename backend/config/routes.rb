@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :word_books, only: [:show]
       resources :levels, only: [:show]
       resources :columns, only: [:show]
+      resources :student, only: [:show]
       resources :index, only: [:index]
     end
   end
