@@ -3,8 +3,6 @@ import {Typography, Button, CardContent, CardMedia, Card, CardActionArea,CardAct
 import style from '../../static/Style/ColumnStyle';
 
 
-
-
 export default function ColumnContent(props) {
   return (
     <div>
