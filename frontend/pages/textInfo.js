@@ -5,6 +5,7 @@ import TextProgressInfo from '../components/TextInfo/TextProgressInfo'
 import SelectLevel from '../components/TextInfo/SelectLevel'
 import Link from 'next/link'
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 
 export default function Index() {
@@ -19,8 +20,11 @@ export default function Index() {
   let correct_percent = Math.floor(data.correct / (data.correct + data.wrong + data.not_yet) * 100);
   let wrong_percent = Math.floor(data.wrong / (data.correct + data.wrong + data.not_yet) * 100);
 
+  const router = useRouter()
+  const id = router.query.id
+
   useEffect(() => {
-    axios.get("http://localhost:8000/api/v1/word_books/1").then( res => {
+    axios.get("http://localhost:8000/api/v1/word_books/"+ String(id)).then( res => {
     console.log('教材データ取得');
     console.log(res.data);
     setData(res.data.text);

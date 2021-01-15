@@ -7,6 +7,7 @@ import ColumnContent from '../components/TextSelection/ColumnContent'
 import Link from 'next/link'
 import style from '../static/Style/ColumnStyle';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 
 export default function columnInfo() {
@@ -18,10 +19,12 @@ export default function columnInfo() {
   const [message, setMessage] = useState(iniMessage);
   const [contents, setContents] = useState(iniContents);
 
+  const router = useRouter()
+  const id = router.query.id
 
   useEffect(() => {
     console.log('コラムデータ取得開始');
-    axios.get("http://localhost:8000/api/v1/columns/3").then( res => {
+    axios.get("http://localhost:8000/api/v1/columns/"+ String(id)).then( res => {
       console.log('コラムデータ取得');
       console.log(res.data);
       setTitle(res.data.title);

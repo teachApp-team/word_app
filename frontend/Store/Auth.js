@@ -14,7 +14,7 @@ function authReducer (state = initial, action) {
   }
 }
 
-async function loginReduce (state, action) {
+async function LoginReduce (state, action) {
   const response = await axios.post('http://localhost:8000/auth/sign_in', { email: action.email, password: action.password })
   console.log(response)
   return {

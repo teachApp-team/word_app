@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from "react-redux";
 import {FormControl,IconButton, InputAdornment,Input,InputLabel, Button, Box, TextField, Grid, Container, createMuiTheme, responsiveFontSizes, ThemeProvider, Typography, makeStyles} from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import clsx from 'clsx';
 import { motion } from "framer-motion";
 import Link from 'next/link'
+import { loginAction } from '../../Store/Auth';
 
 const container = {
   hidden: {y: 70, opacity: 0.1},
@@ -27,6 +29,7 @@ const item = {
 };
 
 export default function LoginBox() {
+  const dispatch = useDispatch();
   
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -66,8 +69,8 @@ export default function LoginBox() {
     const email = document.getElementById('student-login-email').value
     const password = document.getElementById('student-login-password').value
     console.log(email, password)
-    // const action = loginAction(23)
-    // dispatch(action)
+    const action = loginAction(23)
+    dispatch(action)
   }  
 
   const classes = useStyles();
