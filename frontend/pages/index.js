@@ -27,9 +27,7 @@ export default function Index(props) {
   const [data, setData] = useState();
   const dispatch = useDispatch();
   const el = useRef(null);
-
   const ref = useRef();
-
   useEffect(() => {
     console.log(el.current);
     console.log(ref.current);
