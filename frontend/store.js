@@ -13,8 +13,7 @@ const initial = {
   questioncount: 1,
   timelimit: 100,
   question_word_id: 0,
-  test_id: 0,
-  student_id: 0,
+  test_id: 0
 }
 
 

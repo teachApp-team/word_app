@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import axios from 'axios';
 const initial = {
-  student_id: 0
+  student_id: 5
 }
 
 function authReducer (state = initial, action) {

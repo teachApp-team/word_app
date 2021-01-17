@@ -21,16 +21,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header(state) {
+export default function Header(props) {
   const classes = useStyles();
   const data = useSelector(state => state.questioncount)
+  const id = useSelector(state => state.student_id)
+  console.log(id)
   return(
   <AppBar position="static">
     <Toolbar>
       <Link href="/textSelection">
         <Button className={classes.button} variant="contained">Word App</Button>
       </Link>
-      {data}
+      {data}{props.student_id}
       <div className={classes.iconGroup}>
         < IconGroup />
       </div>
