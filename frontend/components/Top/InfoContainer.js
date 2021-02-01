@@ -41,7 +41,7 @@ export default function InfoContainer()  {
     });
     tl1.from("#InfoBoxContainerImg1", {y:200, opacity:0, duraiton:2})
       .from("#InfoBoxContainerTitle1", {y:-200, opacity:0, duraiton:2}, "<")
-      .from("#InfoBoxContainerInfo1", {y:300, opacity:0, duraiton:2},"+=0.5")
+      .from("#InfoBoxContainerInfo1", {y:300, opacity:0, duraiton:2},"<")
     let tl2 = gsap.timeline({
       scrollTrigger: {
         id: `tl2`,
@@ -52,7 +52,7 @@ export default function InfoContainer()  {
     });
     tl2.from("#InfoBoxContainerImg2", {y:200, opacity:0, duraiton:2})
       .from("#InfoBoxContainerTitle2", {y:-200, opacity:0, duraiton:2}, "<")
-      .from("#InfoBoxContainerInfo2", {y:300, opacity:0, duraiton:2},"+=0.5")
+      .from("#InfoBoxContainerInfo2", {y:300, opacity:0, duraiton:2},"<")
     let tl3 = gsap.timeline({
       scrollTrigger: {
         id: `tl3`,
@@ -63,7 +63,7 @@ export default function InfoContainer()  {
     });
     tl3.from("#InfoBoxContainerImg3", {y:200, opacity:0, duraiton:2})
       .from("#InfoBoxContainerTitle3", {y:-200, opacity:0, duraiton:2}, "<")
-      .from("#InfoBoxContainerInfo3", {y:50, opacity:0, duraiton:2},"+=0.5")
+      .from("#InfoBoxContainerInfo3", {y:50, opacity:0, duraiton:2},"<")
   }
   const classes = useStyles();
   return (

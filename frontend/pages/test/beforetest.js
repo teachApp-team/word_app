@@ -39,7 +39,6 @@ export default function Index(props) {
   return (
     <Container disableGutters={true}>
     {style}
-    <Header/>
       <Container maxWidth="xs"  style={{padding:"20px"}}>
         <Card>
           <CardContent style={{padding:"auto"}}> 

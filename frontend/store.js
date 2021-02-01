@@ -13,7 +13,8 @@ const initial = {
   questioncount: 1,
   timelimit: 100,
   question_word_id: 0,
-  test_id: 0
+  test_id: 0,
+  student_id: 5
 }
 
 
@@ -21,6 +22,7 @@ function counterReducer (state = initial, action) {
   switch (action.type) {
     // 単語reducer
     case 'GET':
+      console.log("順番2")
       return getTestDataReduce(state, action);
     case 'NEXT':
       return nextReduce(state, action);
@@ -34,6 +36,7 @@ function counterReducer (state = initial, action) {
 
 // テストデータ取得処理
 function getTestDataReduce(state, action) {
+  console.log("順番3")
   let d = action.data;
   let a = action.alternative
   console.log("Reduce動きました")
@@ -115,6 +118,7 @@ function checkReduce(state, action) {
 }
 
 export function getTestData(data) {
+  console.log("順番1")
   let alternative = [[data[0][0].japanese,"t"], [data[0][1].japanese,"f"], [data[0][2].japanese,"f"], [data[0][3].japanese,"f"]]
   for(var i = alternative.length - 1; i > 0; i--){
     var rand = Math.floor(Math.random() * (i + 1));

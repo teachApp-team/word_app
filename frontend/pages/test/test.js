@@ -1,7 +1,5 @@
 import React,  { Component }  from 'react';
 import {Container, Box, Button} from '@material-ui/core';
-import Tab from '../../components/Tab';
-import Header from '../../components/Layout/Header';
 import Question from '../../components/Test/Question';
 import Judge from '../../components/Test/Judge';
 import Alternative from '../../components/Test/Alternative';
@@ -10,8 +8,7 @@ import { connect } from 'react-redux';
 import Link from 'next/link'
 import style from '../../static/Style';
 import { ProgressBar } from 'react-bootstrap';
-import { nextTest, getTestData } from '../../store';
-import axios from 'axios';
+import { nextTest } from '../../store';
 import { withRouter } from 'next/router';
 import Router  from 'next/router';
 
@@ -44,7 +41,6 @@ class Index extends Component {
     return (
       <Container disableGutters={true}>
         {style}
-        <Header/>
         <Container maxWidth="xs"  style={{padding:"20px"}}>
           <ProgressBar animated now={this.props.timelimit} label={`${5}秒`} />
           <ResultInfo />

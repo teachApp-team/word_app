@@ -1,5 +1,5 @@
 import React, { useRef,useEffect,useState } from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {Container, Box} from '@material-ui/core';
 import Tab from '../components/Tab';
 import Header from '../components/Layout/Header';
@@ -64,12 +64,24 @@ export default function Index(props) {
     dispatch(action)
   }
 
+  const d = useSelector(state => state.questioncount)
+  const t = useSelector(state => state.text)
+  const s = useSelector(state => state.student_id)
+  console.log(d)
+  console.log(t)
+  console.log(s)
+
   return (
     <Container disableGutters={true}>
       <Header/>
       <Box my={4}>
         <h1>Welcome to Word App</h1>
         <Tab />
+      </Box>
+      <Box my={4}>
+        <h1>props.student_id</h1>
+        <h1>{d}</h1>
+        <h1>{s}</h1>
       </Box>
       <Box my={4} p={4}>
         <form noValidate autoComplete="off">

@@ -1,6 +1,5 @@
 import React,  { useState, useEffect }  from 'react';
 import {Container,Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@material-ui/core';
-import Header from '../../components/Layout/Header';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -47,7 +46,6 @@ export default function AfterTest(props) {
   console.log(data);
   return (
     <Container disableGutters={true}>
-      <Header/>
       <Container maxWidth="lg" style={{margin:"20px auto" }}>
         <TableContainer component={Paper}>
           <Table aria-label="simple table">

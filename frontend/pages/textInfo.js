@@ -37,7 +37,6 @@ export default function Index() {
   
   return (
     <Container disableGutters={true}>
-      <Header/>
       <TextProgressInfo 
         name={data.name}
         info={data.description} 

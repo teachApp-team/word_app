@@ -9,7 +9,6 @@ import TextData from '../components/learningCondition/TextData';
 export default function Index() {
   return (
     <Container disableGutters={true}>
-      <Header/>
       <WeekCondition/>
       <EachData/>
       <TextData text={"システム英単語"}/>
