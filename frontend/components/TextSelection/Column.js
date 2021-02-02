@@ -18,22 +18,23 @@ export default function Column(props) {
       <CardActionArea>
         <CardContent>
           {props.l.loading ? (
-            <Typography gutterBottom variant="h6" component="h5">
-              <Skeleton  animation="wave"/>
-            </Typography>
+            <div>
+              <Typography gutterBottom variant="h6" component="h5">
+                <Skeleton  animation="wave"/>
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <Skeleton  animation="wave"/>
+              </Typography>
+            </div>
           ):(
-            <Typography gutterBottom variant="h6" component="h5">
-              {props.columnName}
-            </Typography>
-          )}
-          {props.l.loading ? (
-            <Typography variant="body2" color="textSecondary" component="p">
-              <Skeleton  animation="wave"/>
-            </Typography>
-          ):(
-            <Typography variant="body2" color="textSecondary" component="p">
-              {props.columnInfo}
-            </Typography>
+            <div>
+              <Typography gutterBottom variant="h6" component="h5">
+                {props.columnName}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {props.columnInfo}
+              </Typography>
+            </div>
           )}
         </CardContent>
       </CardActionArea>

@@ -6,6 +6,9 @@ import LearningTexts from '../components/TextSelection/LearningTexts'
 import Column from '../components/TextSelection/Column'
 import Link from 'next/link'
 import axios from 'axios';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 
 export default function Index() {
@@ -16,6 +19,14 @@ export default function Index() {
   const [books, setBooks] = useState(iniBooks);
   const [columns, setColumns] = useState(iniColumns);
   const [loading, setLoading] = useState(iniLoading);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3
+  };
 
   useEffect(() => {
     axios.get("http://localhost:8000/api/v1/index").then( res => {
@@ -47,15 +58,19 @@ export default function Index() {
               <LearningTexts id={b.id} bookName={b.name} bookDescription={b.description} l={loading}/>
           ))}
         </div>
-        <div style={{padding:"20px 0px 10px 0px"}}>
-          <h5>コラム一覧</h5>
+        <div>
+          <div style={{padding:"20px 0px 10px 0px"}}>
+            <h5>コラム一覧</h5>
+          </div>
+          <Slider {...settings}>
+            {columns.map((c, i) => (
+              <div>
+                <Column id={c.id} columnName={c.column_name} columnInfo={c.info} l={loading}/>
+              </div>
+            ))}
+          </Slider>
         </div>
 
-        <div style={{overflowX:"auto", width:"100%", display: "flex", overflowScrolling: "touch", padding:"10px" }}>
-          {columns.map((c, i) => (
-            <Column id={c.id} columnName={c.column_name} columnInfo={c.info} l={loading}/>
-          ))}
-        </div>
         <Link href="/">
           <a>Go to index page</a>
         </Link>

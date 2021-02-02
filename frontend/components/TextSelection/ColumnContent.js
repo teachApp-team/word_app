@@ -2,7 +2,6 @@ import React from 'react';
 import {Typography, Button, CardContent, CardMedia, Card, CardActionArea,CardActions} from '@material-ui/core';
 import style from '../../static/Style/ColumnStyle';
 
-
 export default function ColumnContent(props) {
   return (
     <div>
