@@ -14,7 +14,7 @@ export default function Column(props) {
   console.log(props.l.loading)
   
   return( 
-    <Card style={{display:"inline-block", maxWidth: "200px", flexShrink: 0, marginRight: "30px"}}>
+    <Card style={{display:"inline-block", maxWidth: "200px"}}>
       <CardActionArea>
         <CardContent>
           {props.l.loading ? (
